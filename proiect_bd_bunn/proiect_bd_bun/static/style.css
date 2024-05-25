@@ -1,0 +1,153 @@
+/* style.css */
+
+/* Stilizare generală pentru corpul paginii */
+body {
+    background-color: #a1636c; /* pink */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2a1b1b; /* Blue green */
+}
+
+/* Container central pentru conținut */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Stil pentru butoane */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2a1b1b; /* Blue green */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2e0202; /* Roșu mai închis la hover */
+}
+
+.button:active {
+    background-color: #4b0707; /* Roșu mai închis când este apăsat */
+}
+
+/* Stil pentru tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #2a1b1b; /* Blue green */
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #2a1b1b; /* Blue green */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    background-color: #ffffff;
+    color: #2a1b1b; /* Blue green */
+}
+
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+/* Stil pentru antet */
+header {
+    background-color: #2a1b1b; /* Blue green */
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Stil pentru linkuri */
+a {
+    color: #2a1b1b; /* Blue green */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Stil pentru titlurile paginii */
+h1 {
+    color: #2a1b1b; /* Blue green */
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+/* Stil pentru paragrafe */
+p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin: 20px 0;
+}
+
+/* Stil pentru formulare */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="email"],
+form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form input[type="submit"] {
+    background-color: #2a1b1b; /* Blue green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #2e0202; /* Roșu mai închis la hover */
+}

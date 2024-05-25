@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="button">Start</a>
+        <h1>Creare comandă</h1>
+        <form action="/creare_comanda" method="post" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="adresa">Adresă livrare:</label>
+            <input type="text" id="adresa" name="adresa"><br><br>
+            <label for="cosmetice">Selectați Produse:</label><br>
+            <table>
+                <tr>
+                    <th>Nume produs</th>
+                    <th>Pret (RON)</th>
+                    <th>Selectați</th>
+                </tr>
+                {% for produs in produse %}
+                <tr>
+                    <td>{{ produs[2] }}</td>
+                    <td>{{ produs[1] }}</td>
+                    <td><input type="checkbox" id="{{ produs[2] }}" name="cosmetice" value="{{ produs[2] }}"></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+            function validateForm() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var adresa = document.getElementById("adresa").value;
+                var cosmetice = document.querySelectorAll('input[name="cosmetice"]:checked').length;
+
+                if (username === "" || password === "" || adresa === "" || cosmetice === 0) {
+                    alert("Toate câmpurile trebuie completate și cel puțin o cosmetice trebuie selectată!");
+                    return false;
+                }
+
+                // Returnează true dacă toate condițiile sunt îndeplinite, ceea ce permite trimiterea formularului
+                return true;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

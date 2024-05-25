@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="button">Start</a>
+        <h1>Comenzile tale</h1>
+        <table>
+            <tr>
+                <th>ID Comandă</th>
+                <th>Adresă livrare</th>
+                <th>Status</th>
+                <th>Pret comandă (RON)</th>
+                <th>Nume Curier</th>
+                <th>Telefon Curier</th>
+                <th>Produse</th>
+                <th>Ștergere</th> <!-- Adăugăm o coloană pentru butonul de ștergere -->
+            </tr>
+            {% for comanda in comenzi %}
+            <tr>
+                <td>{{ comanda[0] }}</td>
+                <td>{{ comanda[3] }}</td>
+                <td>{{ comanda[1] }}</td>
+                <td>{{ comanda[2] }}</td>
+                <td>{{ comanda[4] }}</td>
+                <td>{{ comanda[5] }}</td>
+                <td>{{ comanda[6] }}</td>
+                <td><button onclick="deleteCommand('{{ comanda[6] }}', '{{ comanda[0] }}')">Șterge</button></td>
+                </td>
+                <!-- Butonul de ștergere -->
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        function deleteCommand(numecosmetice, idComanda) {
+            // Trimitem o cerere POST către ruta /delete_command
+            fetch('/delete_command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ numecosmetice: numecosmetice, idComanda: idComanda }), // Trimitem numele produsului și id-ul comenzii în format JSON
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Afisăm mesajul de succes sau eroare primit de la server
+                    if (data.success) {
+                        alert('Produsul a fost șters cu succes!');
+                        // Aici poți actualiza pagina sau face alte acțiuni necesare
+                        location.reload(); // Reîncarcăm pagina pentru a reflecta modificările
+                    } else {
+                        alert('Eroare: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Eroare:', error);
+                    alert('A apărut o eroare.');
+                });
+        }
+    </script>
+
+
+
+</body>
+
+</html>

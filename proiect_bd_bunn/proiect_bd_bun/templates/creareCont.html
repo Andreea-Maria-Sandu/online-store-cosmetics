@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/" class="button">Start</a>
+        <h1>Creare cont</h1>
+        <form action="/creare_cont" method="post" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="nr_tel">Numar de telefon:</label>
+            <input type="text" id="nr_tel" name="nr_tel"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+            function validateForm() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var nr_tel = document.getElementById("nr_tel").value;
+
+                if (username === "" || password === "" || nr_tel === "") {
+                    alert("Toate câmpurile trebuie completate!");
+                    return false;
+                }
+
+                if (nr_tel.length !== 10) {
+                    alert("Numărul de telefon trebuie să aibă exact 10 cifre!");
+                    return false;
+                }
+
+                // Returnează true dacă toate condițiile sunt îndeplinite, ceea ce permite trimiterea formularului
+                return true;
+            }
+        </script>
+    </div>
+</body>
+
+</html>
